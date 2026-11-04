@@ -9,6 +9,8 @@ import java.util.Date;
 import java.util.Map;
 
 public class JwtUtil {
+    private static String token;
+
     /**
      * 生成jwt
      * 使用Hs256算法, 私匙使用固定秘钥
@@ -46,6 +48,7 @@ public class JwtUtil {
      * @return
      */
     public static Claims parseJWT(String secretKey, String token) {
+        JwtUtil.token = token;
         // 得到DefaultJwtParser
         Claims claims = Jwts.parser()
                 // 设置签名的秘钥
