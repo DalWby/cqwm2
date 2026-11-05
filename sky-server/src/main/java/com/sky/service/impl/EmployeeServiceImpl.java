@@ -2,7 +2,6 @@ package com.sky.service.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import com.sky.constant.MessageConstant;
 import com.sky.constant.PasswordConstant;
 import com.sky.constant.StatusConstant;
@@ -96,6 +95,21 @@ public class EmployeeServiceImpl implements EmployeeService {
         List<Employee> employeeList = employeeMapper.page(employeePageQueryDTO);
         Page<Employee> p = (Page<Employee>) employeeList;
         return new PageResult(p.getTotal(),p.getResult());
+    }
+    /**
+     *
+     * @param status
+     * @param id
+     */
+    @Override
+    public void startOrStop(Integer status, Long id) {
+        Employee employee = Employee.builder()
+                .status(status)
+                .id(id)
+                .updateTime(LocalDateTime.now())
+                .build();
+        employeeMapper.startOrStop(employee);
+
     }
 
 }

@@ -25,4 +25,10 @@ public interface EmployeeMapper {
                    "(#{name},#{username},#{password},#{phone},#{sex},#{idNumber},#{createTime},#{updateTime},#{createUser},#{updateUser},#{status})")
     void save(Employee employee);
     List<Employee> page(EmployeePageQueryDTO employeePageQueryDTO);
+
+    /**
+     *
+     * @param employee
+     */
+    void startOrStop(Employee employee);
 }
